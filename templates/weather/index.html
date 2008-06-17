@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load comments %}
+{% load weather %}
+{% block title %} Links {% endblock %}
+{% block content %}
+<style>
+#content_column_435 { width: 435px; margin:0px 5px 5px 10px; overflow:hidden;}
+.forecast_titlebar, city_title { margin-bottom:5px; }
+.city_heading { font-size:18px; font-weight:bold; color:#000000; line-height:22px; }
+.fcst_date {color:#7F7F7F;font-size:13px;line-height:15px;font-weight:bold;float:left;width:280px;}
+.textsmall {font-size:11px;font-weight:normal;}
+.content_box_435 { width: 435px; position: relative;}
+.content_box_435header { width: 434px; height: 25px; background-color: #BEBEBE; font-family: arial,verdana,helvetica,sans-serif; font-size: 11pt; font-weight: bold; border: solid #666666; border-width: 0px 1px 1px 0px; text-indent: 10px; }
+.content_box_435body { width: 433px; background-color: #FFFFFF; border: solid #666666;border-width: 1px; }
+.content_box_header_text { color: #2a2a2a; font-size: 16px; font-weight: bold; text-indent: 5px; padding-top: 2px; }
+#content_box_435body_quicklook { background: #79A0DB; height: 176px; padding-top: 5px; }
+#quicklook_current { float: left; padding: 5px; width: 190px; font-weight: bold; font-size: 12px; margin-bottom: 5px; color: #000000; }
+#quicklook_current_icontemp { width: 200px; }
+#img_quicklook_curr_icon { float: left; width: 90px; height: 90px; display: block; margin-top: 2px; margin-bottom: 10px;}
+#quicklook_curr_tempbox { float: right; width: 100px; height: 90px; text-align: center; margin-top: 2px; }
+#quicklook_current_temps { font-size: 24px; font-weight: bold; padding: 0; margin: 0; height: 26px;}
+#quicklook_current_rf { font-size: 12px; font-weight: bold; margin:0; padding: 0; height: 12px;}
+#quicklook_current_rfval { font-size: 21px; font-weight: bold; margin:0; padding: 0; height: 22px; margin-bottom: 3px;}
+#quicklook_current_wxtext { font-weight: bold; }
+#quicklook_current_wxdataleft { float: left; width: 90px; font-weight: normal; font-size: 11px; }
+#quicklook_current_wxdataright { float: right; width: 90px; font-weight: normal; font-size: 11px; }
+.quicklook_day { background: url(http://vortex.accuweather.com/adc2004/pub/images/2006/rule_vert_fcst.gif); background-repeat: repeat-y; float: right; padding: 5px 0px 0px 10px; width: 105px; font-weight: bold; }
+.quicklook_day_icon { margin: 5px 0px; width: 78px; height: 62px; display: block; }
+.quicklook_day_tempdata { margin-bottom: 10px; font-size: 11px; }
+.quicklook_day_wxdata { margin-bottom: 5px; font-weight: normal; font-size: 11px; }
+.content_box_435_daily { width: 435px; position: relative;}
+.content_box_435body_daily { width: 434px; background-color: #FFFFFF; border: solid #666666;border-width: 1px; }
+.content_box_435header_daily { width: 434px; height: 25px; background-color: #BEBEBE; font-family: arial,verdana,helvetica,sans-serif; font-size: 11pt; font-weight: bold; border: solid #666666; border-width: 0px 1px 1px 0px; text-indent: 10px; }
+#content_box_435_hourbyhour { margin-top: 10px; }
+#content_box_435body_hourbyhour { background-color: #FFFFFF; height: 140px; }
+#hourly_day_nowhour { float: left; padding: 3px; width: 65px; }
+.hourly_text_time { font-weight: bold; font-size: 11px; line-height: 12px; padding-top: 4px; text-align: center; }
+.hourly_icon { padding-bottom: 3px; padding-top: 3px; text-align: center; width: 65px; }
+.hourly_text_fcst { font-weight: bold; font-size: 11px; line-height: 10px; padding-top: 1px; text-align: center; }
+.hourly_text_temp { font-weight: bold; font-size: 11px; line-height: 10px; padding-top: 1px; text-align: center; }
+.hourly_day_rule { background: url(http://vortex.accuweather.com/adc2004/pub/images/2006/rule_vert.gif); background-repeat: repeat-y; float: left; padding: 3px; width: 65px; height: 120px; }
+
+</style>
+<div id="content_column_435">
+	<div class="forecast_titlebar">
+			<div class="city_title">
+				<div class="city_heading"> {{weather.city}} Weather Forecast</div>
+			</div>
+			<div class="fcst_date" style="width: 430px;">
+				<div style="float: left; width: 330px;">{{weather.observed}}</div>
+				<div style="float: right;"><a href="#" class="textsmall">Metric</a> | <a href="#">English</a></div>
+				<div style="clear: both;"></div>
+			</div>
+			<div style="clear: both;"></div>
+	</div>
+	<div class="content_box_435">
+		<div class="content_box_435header">
+			<div class="content_box_header_text">Quick Look</div>
+		</div>	
+		<div class="content_box_435body" id="content_box_435body_quicklook">
+			<div id="quicklook_current">
+				<div style="float: left; font-family: Arial; font-size: 11px; font-weight: normal;">
+					<span style="font-weight: bold; font-size: 12px; font-family: Arial;">Currently</span> At {{currenttime}}</div>
+
+				<div style="float: left; margin-left: 3px; font-weight: normal; font-size: 11px; font-family: Arial;">
+					[ <a style="font-family: Arial; font-size: 11px; font-weight: bold;" href="#">More</a> ]
+				</div>
+				<div style="clear: both;"></div>
+				<div id="quicklook_current_icontemp">
+					<img id="img_quicklook_curr_icon" title="{{weather.type}}" alt="{{weather.type}}" src="/media/weather/{{weather.icon}}.png" width="64" height="64" />
+					<div id="quicklook_curr_tempbox">
+						<div id="quicklook_current_temps">{{weather.temperature}}&deg; {{weather.unitTemp}}</div>
+						<div id="quicklook_current_rf">Feels Like</div>
+						<div id="quicklook_current_rfval">{{weather.feelslike}}&deg; {{weather.unitTemp}}</div>
+						<div class="textsmall">Winds: 
+							{% ifequal weather.wind.speed "calm" %} Calm {% else %} {{weather.wind.direction}}<br /> at {{weather.wind.speed}} {{weather.unitSpeed}}{% endifequal %} 
+							{% ifnotequal weather.wind.gusts "N/A" %}<br /> gusting to {{weather.wind.gusts}} {{weather.unitSpeed}} {% endifnotequal %}
+						</div>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+				<div id="quicklook_current_wxtext">{{weather.type}}</div>
+				<div id="quicklook_current_wxdataleft">
+					Humidity: {{weather.humidity}}%<br>
+					Dew Point: {{weather.dewpoint}}&deg; {{weather.unitTemp}}
+				</div>
+				<div id="quicklook_current_wxdataright">
+					<span class="textsmall">Pressure: {{weather.bar.reading}}{{weather.unitPressure}} <!--{{weather.bar.direction|capfirst}}--></span><br>
+					Visibility: {{weather.visibility}} {{weather.unitDistance}}
+				</div>
+			</div>
+			{% quicklook weather weather.unitSpeed 0 %}
+		</div>
+	</div>
+		<div class="content_box_435_daily" id="content_box_435_hourbyhour">
+			<div class="content_box_435header_daily">
+				<div class="content_box_header_text">Weekly Weather</div>
+			</div>
+			<div class="content_box_435body_daily" id="content_box_435body_hourbyhour">
+				<div id="hourly_day_nowhour">
+					{% daily weather.forecast.2 2 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.3 3 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.4 4 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.5 5 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.6 6 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.7 7 %}				
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

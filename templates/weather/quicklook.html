@@ -1,0 +1,22 @@
+<div class="quicklook_day">
+	<div style="float: left; font-size: 12px;">{{block2.header}}</div>
+	<div style="float: left; margin-left: 5px; font-weight: normal; font-size: 11px; font-family: Arial;">[ <a style="font-family: Arial; font-size: 11px; font-weight: bold;" href="#">More</a> ]</div>
+	<div style="clear: both;"></div>
+
+	<img class="quicklook_day_icon" src="/media/weather/{{block2.icon}}.png" alt="{{block2.type}}" title="{{block2.type}}" height="72" width="72">
+	<div class="quicklook_day_tempdata">
+	{% ifequal block2.header "Tonight" %} Low: {{block2.temp}} {% else %} High: {{block2.temp}} {% endifequal %}
+	</div>
+	<div class="quicklook_day_wxdata">Sunrise: {{block2.sunrise}}<br />Sunset: {{block2.sunset}}</div>
+</div>
+<div class="quicklook_day">
+	<div style="float: left; font-size: 12px;">{{block1.header}}</div>
+	<div style="float: left; margin-left: 5px; font-weight: normal; font-size: 11px; font-family: Arial;">[ <a style="font-family: Arial; font-size: 11px; font-weight: bold;" href="#">More</a> ]</div>
+	<div style="clear: both;"></div>
+
+	<img class="quicklook_day_icon" src="/media/weather/{{block1.icon}}.png" alt="{{block1.type}}" title="{{block1.type}}" height="72" width="72">
+	<div class="quicklook_day_tempdata">
+		{% ifequal block1.header "Tonight" %} Low: {{block1.temp}} {% else %} High: {{block1.temp}} {% endifequal %}
+	</div>
+	<div class="quicklook_day_wxdata">Sunrise: {{block1.sunrise}}<br />Sunset: {{block1.sunset}}</div>
+</div>
