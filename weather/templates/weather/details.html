@@ -1,0 +1,35 @@
+	<!-- Start Day-->
+	<div class="details_day">
+		<div class="details_day_date">{{day}}</a>, {{date}}</div>
+		<div class="details_day_icon">
+			<img src="/media/weather/images/{{day_icon}}.png" width="90" height="90" />
+		</div>
+		<div class="details_day_wrap">
+			<div class="details_day_info">High: {{day_hi}}&deg;F<br />Humidity: {{day_humidity}}%<br />Precip: {{day_pop}}%</div>
+		</div>
+		<div class="clear"></div>
+		<div class="details_day_info_ext">
+			<strong>{{day_type}}</strong><br />
+			<strong>Wind:</strong> {{day_wind_direction}} {{day_wind_speed}}<br />
+			<strong>Gusts:</strong> {{day_wind_gusts}}
+		</div>
+  	</div>
+	<!-- End Day/Start Night -->
+	<div class="details_night">
+		<div class="details_night_date">{{day}} Night, {{date}}</div>
+		<div class="details_night_icon">
+			<img src="/media/weather/images/{{night_icon}}.png" width="90" height="90" />
+		</div>
+		<div class="details_night_wrap">
+			<div class="details_night_info">Low: {{night_low}}&deg;F<br />Humidity: {{night_humidity}}%<br />Precip: {{night_pop}}%</div>
+		</div>
+		<div class="clear"></div>
+		<div class="details_night_info_ext">
+			<strong>{{night_type}}</strong><br />
+			<strong>Wind:</strong> {{night_wind_direction}} {{night_wind_speed}}<br />
+			<strong>Gusts:</strong> {{night_wind_gusts}}
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	<!-- Stop -->

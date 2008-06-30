@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load comments %}
+{% load weather %}
+{% block title %} Links {% endblock %}
+{% block content %}
+<div id="content_column">
+	<div class="forecast_titlebar">
+			<div class="city_title">
+				<div class="city_heading"> {{weather.city}} Weather Forecast</div>
+			</div>
+			<div class="update_date">
+				<div class="update_date_text">{{weather.observed}}</div>
+				<div class="update_date_empty">&nbsp;</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+	</div>
+	<div class="content_box">
+		<div class="content_box_header">
+			<div class="content_box_header_text">Quick Look</div>
+		</div>	
+		<div class="content_box_body" id="content_box_body_quicklook">
+			<div id="quicklook_current">
+				<div id="quicklook_current_box">
+					<span id="quicklook_current_time">Currently</span> At {{currenttime}}</div>
+				<div class="clear"></div>
+				<div id="quicklook_current_icontemp">
+					<img id="img_quicklook_curr_icon" title="{{weather.type}}" alt="{{weather.type}}" src="/media/weather/images/{{weather.icon}}.png" width="64" height="64" />
+					<div id="quicklook_curr_tempbox">
+						<div id="quicklook_current_temps">{{weather.temperature}}&deg; {{weather.unitTemp}}</div>
+						<div id="quicklook_current_rf">Feels Like</div>
+						<div id="quicklook_current_rfval">{{weather.feelslike}}&deg; {{weather.unitTemp}}</div>
+						<div class="textsmall">Winds: 
+							{% ifequal weather.wind.speed "calm" %} Calm {% else %} {{weather.wind.direction}}<br /> at {{weather.wind.speed}} {{weather.unitSpeed}}{% endifequal %} 
+							{% ifnotequal weather.wind.gusts "N/A" %}<br /> gusting to {{weather.wind.gusts}} {{weather.unitSpeed}} {% endifnotequal %}
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div id="quicklook_current_text">{{weather.type}}</div>
+				<div id="quicklook_current_dataleft">
+					Humidity: {{weather.humidity}}%<br>
+					Dew Point: {{weather.dewpoint}}&deg; {{weather.unitTemp}}
+				</div>
+				<div id="quicklook_current_dataright">
+					<span class="textsmall">Pressure: {{weather.bar.reading}}{{weather.unitPressure}} <!--{{weather.bar.direction|capfirst}}--></span><br>
+					Visibility: {{weather.visibility}} {{weather.unitDistance}}
+				</div>
+			</div>
+			{% quicklook weather weather.unitSpeed 0 %}
+		</div>
+		<div class="clear"></div>
+		<div class="details0">
+			{% forecast weather.forecast.0 weather.unitSpeed 0 %}
+		</div>
+		<div class="details1">
+			{% forecast weather.forecast.1 weather.unitSpeed 1 %}
+		</div>
+	</div>
+		<div class="content_box_daily" id="content_box_hourbyhour">
+			<div class="content_box_header_daily">
+				<div class="content_box_header_text">Weekly Weather</div>
+			</div>
+			<div class="content_box_body_daily" id="content_box_body_hourbyhour">
+				<div id="hourly_day_nowhour">
+					{% daily weather.forecast.2 2 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.3 3 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.4 4 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.5 5 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.6 6 %}
+				</div>
+				<div class="hourly_day_rule">
+					{% daily weather.forecast.7 7 %}				
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="details2">
+			{% forecast weather.forecast.2 weather.unitSpeed 2 %}
+		</div>
+		<div class="details3">
+			{% forecast weather.forecast.3 weather.unitSpeed 3 %}
+		</div>
+		<div class="details4">
+			{% forecast weather.forecast.4 weather.unitSpeed 4 %}
+		</div>
+		<div class="details5">
+			{% forecast weather.forecast.5 weather.unitSpeed 5 %}
+		</div>
+		<div class="details6">
+			{% forecast weather.forecast.6 weather.unitSpeed 6 %}
+		</div>
+		<div class="details7">
+			{% forecast weather.forecast.7 weather.unitSpeed 7 %}
+		</div>
+	</div>
+{% endblock %}
