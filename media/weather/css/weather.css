@@ -1,0 +1,60 @@
+.ccDetails { text-align: center; margin: 0 auto; } 
+.wConditions { font-size: small; font-weight: bold; }
+.wConditions img { vertical-align:  middle; }
+.wConditions a { text-decoration: none; }
+#content_column { width: 435px; margin:0px 5px 5px 10px; overflow:hidden;}
+.forecast_titlebar, city_title { margin-bottom:5px; }
+.city_heading { font-size:18px; font-weight:bold; color:#000000; line-height:22px; }
+.update_date {color:#7F7F7F;font-size:13px;line-height:15px;font-weight:bold;float:left;width:430px;}
+.update_date_text { float: left; width: 330px; }
+.update_date_empty {float: right;}
+.textsmall {font-size:11px;font-weight:normal;}
+.content_box { width: 435px; position: relative;}
+.content_box_header { width: 434px; height: 25px; background-color: #BEBEBE; font-family: arial,verdana,helvetica,sans-serif; font-size: 11pt; font-weight: bold; border: solid #666666; border-width: 0px 1px 1px 0px; text-indent: 10px; }
+.content_box_body { width: 433px; background-color: #FFFFFF; border: solid #666666;border-width: 1px; }
+.content_box_header_text { color: #2a2a2a; font-size: 16px; font-weight: bold; text-indent: 5px; padding-top: 2px; }
+#content_box_body_quicklook { background: #79A0DB; height: 185px; padding-top: 5px; }
+#quicklook_current { float: left; padding: 5px; width: 190px; font-weight: bold; font-size: 12px; margin-bottom: 5px; color: #000000; }
+#quicklook_current_box {float: left; font-family: Arial; font-size: 11px; font-weight: normal;}
+#quicklook_current_icontemp { width: 200px; }
+#quicklook_current_time {font-weight: bold; font-size: 12px; font-family: Arial;}
+#img_quicklook_curr_icon { float: left; width: 90px; height: 90px; display: block; margin-top: 2px; margin-bottom: 10px;}
+#quicklook_curr_tempbox { float: right; width: 100px; height: 90px; text-align: center; margin-top: 2px; }
+#quicklook_current_temps { font-size: 24px; font-weight: bold; padding: 0; margin: 0; height: 26px;}
+#quicklook_current_rf { font-size: 12px; font-weight: bold; margin:0; padding: 0; height: 12px;}
+#quicklook_current_rfval { font-size: 21px; font-weight: bold; margin:0; padding: 0; height: 22px; margin-bottom: 3px;}
+#quicklook_current_text { font-weight: bold; padding-top: 10px; }
+#quicklook_current_dataleft { float: left; width: 90px; font-weight: normal; font-size: 11px; }
+#quicklook_current_dataright { float: right; width: 90px; font-weight: normal; font-size: 11px; }
+.quicklook_day { background: url(/media/weather/images/rule_vert.gif); background-repeat: repeat-y; float: right; padding: 5px 0px 0px 5px; width: 110px; font-weight: bold; }
+.quicklook_day_icon { margin: 5px 0px; width: 78px; height: 62px; display: block; }
+.quicklook_day_tempdata { margin-bottom: 10px; font-size: 11px; }
+.quicklook_day_wxdata { margin-bottom: 5px; font-weight: normal; font-size: 11px; }
+.quicklook_day_header  {float: left; font-size: 12px;}
+.quicklook_day_more {float: left; margin-left: 2px; font-weight: normal; font-size: 11px; font-family: Arial;}
+.quicklook_day_moretoggle {font-family: Arial; font-size: 11px; font-weight: bold; color:#AA2808; cursor: pointer}
+.content_box_daily { width: 435px; position: relative;}
+.content_box_body_daily { width: 434px; background-color: #FFFFFF; border: solid #666666;border-width: 1px; }
+.content_box_header_daily { width: 434px; height: 25px; background-color: #BEBEBE; font-family: arial,verdana,helvetica,sans-serif; font-size: 11pt; font-weight: bold; border: solid #666666; border-width: 0px 1px 1px 0px; text-indent: 10px; }
+#content_box__hourbyhour { margin-top: 10px; }
+#content_box_body_hourbyhour { background-color: #FFFFFF; height: 140px; }
+#hourly_day_nowhour { float: left; padding: 3px; width: 65px; }
+.hourly_text_time { color:#AA2808;font-weight: bold; font-size: 11px; line-height: 12px; padding-top: 4px; text-align: center; cursor: pointer; }
+.hourly_icon { padding-bottom: 3px; padding-top: 3px; text-align: center; width: 65px; }
+.hourly_text_fcst { font-weight: bold; font-size: 11px; line-height: 10px; padding-top: 1px; text-align: center; }
+.hourly_text_temp { font-weight: bold; font-size: 11px; line-height: 10px; padding-top: 1px; text-align: center; }
+.hourly_day_rule { background: url(/media/weather/images/rule_vert.gif); background-repeat: repeat-y; float: left; padding: 3px; width: 65px; height: 120px; }
+.details0,.details1,.details2,.details3,.details4,.details5,.details6,.details7 { display: none;}
+.details_day { float: left; font-family: Arial;width: 216px; border-right: 1px solid #FFFFFF; background-color: #fff; background-repeat: repeat-x; background-image: url(/media/weather/images/forecast_day_bg.gif); }
+.details_night { float: right; width: 216px; border-right: 1px solid #FFFFFF; background-color: #BED5EB; background-repeat: repeat-x; background-image: url(/media/weather/images/forecast_night_bg.gif); }
+.clear { clear: both;}
+.details_day_date {font-size: 14px; font-weight: bold; padding: 5px 0px 0px 5px;}
+.details_day_icon {float: left; width: 110px; padding-left: 2px; margin: 0;height: 80px}
+.details_day_wrap {float: right; width: 100px;}
+.details_day_info {font-size: 12px; font-weight: bold; padding-top: 10px;}
+.details_day_info_ext {font-size: 12px; font-weight: normal; padding-top: 5px; padding-left: 5px}
+.details_day_date {font-family: Arial; font-size: 14px; font-weight: bold; padding: 5px 0px 0px 5px;}
+.details_night_icon {float: left; width: 110px; padding-left: 2px; margin: 0;height: 80px}
+.details_night_wrap {float: left; width: 100px;}
+.details_night_info {font-family: Arial; font-size: 12px; font-weight: bold; padding-top: 10px;}
+.details_night_info_ext {font-family: Arial; font-size: 12px; font-weight: normal; padding-top: 5px; padding-left: 5px}
