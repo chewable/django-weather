@@ -1,4 +1,4 @@
-from bpaulson.weather.models import *
+from models import *
 from django import template
 
 register = template.Library()
@@ -43,7 +43,7 @@ def quicklook(data,unitSpeed,daynum):
             'sunrise': data['forecast'][0]['sunrise'],
             'icon': data['forecast'][1]['night']['icon'],
             'type': data['forecast'][1]['night']['type']
-        } 
+        }
     return {'block1': block1, 'block2': block2}
 
 @register.inclusion_tag('weather/daily.html')

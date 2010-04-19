@@ -1,15 +1,18 @@
 from django.db import models
+
+from configstore.configs import get_config
 from xml.dom.minidom import parse, parseString
+import urllib
 import urllib2
 import datetime
 import time
 
 class Current(models.Model):
-    zipcode = models.CharField(maxlength=20)
-    last_update = models.DateTimeField()
+    zipcode = models.CharField(max_length=20)
+    last_update = models.DateTimeField(auto_now=True)
     weather_xml = models.TextField()
 
-    def getInfo(self,wx):
+    def getInfo(self, wx):
         #wx = Current.objects.get(pk=1)
         ctime = time.time() - 1800
         if wx.last_update > datetime.datetime.fromtimestamp(ctime):
@@ -18,8 +21,8 @@ class Current(models.Model):
         else:
             xml = wx.getData()
             #wx = {'last_update':datetime.datetime.today(),'weather_xml':weather}
-            wx.last_update = datetime.datetime.today()
-            wx.weather_xml  = xml
+            # wx.last_update = datetime.datetime.today()
+            wx.weather_xml = xml
             wx.zipcode = 81007
             wx.save()
             weather = wx.getWeather(xml)
@@ -28,10 +31,20 @@ class Current(models.Model):
 
     def getData(self):
         """Connect to weather.com and get the weather as raw XML"""
-        urlHandle = urllib2.urlopen('http://xoap.weather.com/weather/local/%s?cc=1&dayf=10&unit=%s' %(81007, 's'))
+        params = urllib.urlencode({
+            'par': get_config('weather')['partner_id'],
+            'key': get_config('weather')['license_key'],
+            'prod': 'xoap',
+            'link': 'xoap',
+            'cc': '*',
+            'dayf': '5',
+            'unit': 'f'
+        })
+
+        urlHandle = urllib2.urlopen('http://xoap.weather.com/weather/local/%s?%s' % (self.zipcode, params))
         return urlHandle.read()
 
-    def getWeather(self,xml):
+    def getWeather(self, xml):
         self.currentConditions = {}
         self.forecast = {}
         dom = parseString(xml)
@@ -175,7 +188,7 @@ class Current(models.Model):
 
             if elem.nodeName == 'ppcp':
                 self.forecast[index]['pop'] = elem.firstChild.data
-                    
+
             if elem.nodeName == 'hmid':
                 self.forecast[index]['humidity'] = elem.firstChild.data
 

@@ -35,7 +35,7 @@ class Weather:
 
     def _getData(self):
         """Connect to weather.com and get the weather as raw XML"""
-        urlHandle = urllib2.urlopen('http://xoap.weather.com/weather/local/%s?cc=1&dayf=10&unit=%s' %(self.location, self.units))
+        urlHandle = urllib2.urlopen('http://xoap.weather.com/weather/local/%s?cc=1&dayf=10&unit=%s' % (self.location, self.units))
         return urlHandle.read()
 
     def _getWeather(self):
@@ -145,18 +145,18 @@ class Weather:
                       self.currentConditions['wind']['direction'] = subelem.firstChild.data
 
         def _setForecast(self, node):
-        day = 0
-        for elem in node.childNodes:
-          if elem.nodeName == 'lsup':
-            pass
+            day = 0
+            for elem in node.childNodes:
+                if elem.nodeName == 'lsup':
+                    pass
 
-          if elem.nodeName == 'day':
-            self._setForecastDay(
-                elem,
-                elem.attributes['d'].value,
-                elem.attributes['t'].value,
-                elem.attributes['dt'].value
-            )
+                if elem.nodeName == 'day':
+                    self._setForecastDay(
+                        elem,
+                        elem.attributes['d'].value,
+                        elem.attributes['t'].value,
+                        elem.attributes['dt'].value
+                    )
 
     def _setForecastDay(self, node, index, day, date):
         index = int(index)
